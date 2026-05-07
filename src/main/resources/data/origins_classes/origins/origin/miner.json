@@ -1,0 +1,11 @@
+{
+  "powers": [
+    "origins_classes:more_stone_break_speed",
+    "origins_classes:no_mining_exhaustion"
+  ],
+  "icon": {
+    "id": "minecraft:iron_pickaxe"
+  },
+  "order": 3,
+  "impact": 0
+}

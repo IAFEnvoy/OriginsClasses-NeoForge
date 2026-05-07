@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "#origins_classes:bows",
+    "#origins_classes:crossbows"
+  ]
+}

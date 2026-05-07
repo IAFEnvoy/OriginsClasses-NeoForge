@@ -1,0 +1,18 @@
+{
+  "replace": false,
+  "values": [
+    "#origins_classes:hoes",
+    "#origins_classes:pickaxes",
+    "#origins_classes:axes",
+    "#origins_classes:shovels",
+    "#origins_classes:shears",
+    {
+      "id": "tetra:modular_single",
+      "required": false
+    },
+    {
+      "id": "tetra:modular_double",
+      "required": false
+    }
+  ]
+}

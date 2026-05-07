@@ -1,0 +1,25 @@
+{
+  "type": "origins:modify_damage_dealt",
+  "modifier": {
+    "name": "Stealth Damage Multiplier",
+    "value": 1,
+    "operation": "multiply_base_additive"
+  },
+  "damage_condition": {
+    "type": "origins:projectile",
+    "inverted": true
+  },
+  "bientity_condition": {
+    "type": "origins_classes:yaw_diff",
+    "comparison": "<=",
+    "compare_to": 90
+  },
+  "condition": {
+    "type": "origins:resource",
+    "resource": "origins_classes:stealth",
+    "comparison": "==",
+    "compare_to": 10
+  },
+  "name": "power.origins_classes.stealth_core.name",
+  "description": "power.origins_classes.stealth_core.description"
+}

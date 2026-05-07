@@ -1,0 +1,15 @@
+{
+  "type": "origins:starting_equipment",
+  "stack": [
+    {
+      "id": "minecraft:compass"
+    },
+    {
+      "id": "minecraft:clock"
+    },
+    {
+      "id": "minecraft:map",
+      "amount": 9
+    }
+  ]
+}

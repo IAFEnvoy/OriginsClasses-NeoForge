@@ -1,0 +1,42 @@
+{
+  "required": true,
+  "package": "com.iafenvoy.origins.classes.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "AbstractArrowMixin",
+    "AbstractCauldronBlockMixin",
+    "AbstractFurnaceBlockEntityMixin",
+    "AbstractVillagerMixin",
+    "AnvilMenuMixin",
+    "ArrowMixin",
+    "BlockMixin",
+    "BreedGoalMixin",
+    "BrewingRecipeRegistryMixin",
+    "DataComponentHolderMixin",
+    "EnchantmentMenuMixin",
+    "PotionContentsMixin",
+    "ProjectileMixin",
+    "RepairItemRecipeMixin",
+    "ServerPlayerGameModeMixin",
+    "ServerPlayerMixin",
+    "TippedArrowRecipeMixin",
+    "TransientCraftingContainerMixin",
+    "accessor.LivingEntityAccessor",
+    "accessor.LootTableAccessor",
+    "integration.CookingPotResultSlotMixin",
+    "integration.ModifyFoodPowerMixin",
+    "integration.SkilletItemMixin",
+    "slot.WithPlayerSlotMixin",
+    "slot.SlotMixin"
+  ],
+  "client": [
+    "ClientSideMerchantMixin",
+    "LocalPlayerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}

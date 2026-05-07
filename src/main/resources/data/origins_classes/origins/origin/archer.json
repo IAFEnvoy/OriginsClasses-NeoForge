@@ -1,0 +1,11 @@
+{
+  "powers": [
+    "origins_classes:no_projectile_divergence",
+    "origins_classes:less_bow_slowdown"
+  ],
+  "icon": {
+    "id": "minecraft:bow"
+  },
+  "order": 11,
+  "impact": 0
+}

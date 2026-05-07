@@ -1,0 +1,10 @@
+{
+  "type": "origins_classes:modify_repair_material_cost",
+  "modifier": {
+    "name": "Effecient Repair",
+    "value": -0.5,
+    "operation": "multiply_base_additive"
+  },
+  "name":  "power.origins_classes.efficient_repairs.name",
+  "description": "power.origins_classes.efficient_repairs.description"
+}

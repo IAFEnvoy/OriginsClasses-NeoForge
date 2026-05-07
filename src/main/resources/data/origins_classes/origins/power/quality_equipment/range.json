@@ -1,0 +1,21 @@
+{
+  "type": "origins_classes:modify_craft_result",
+  "item_condition": {
+    "type": "origins:and",
+    "conditions": [
+      {
+        "type": "origins_classes:range"
+      },
+      {
+        "type": "origins:has_power",
+        "power": "origins_classes:items/strong_string",
+        "inverted": true
+      }
+    ]
+  },
+  "item_action": {
+    "type": "origins:modify",
+    "modifier": "origins_classes:blacksmith/range"
+  },
+  "hidden": true
+}

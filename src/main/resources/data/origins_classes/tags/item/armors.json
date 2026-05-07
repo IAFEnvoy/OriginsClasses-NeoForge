@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "#origins_classes:helmets",
+    "#origins_classes:chestplates",
+    "#origins_classes:leggings",
+    "#origins_classes:shoes"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "type": "origins:modify_crafting",
+  "item_condition": {
+    "type": "origins:ingredient",
+    "ingredient": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "item_action": {
+    "type": "origins:modify",
+    "modifier": "origins_classes:lumberjack/craft_plank"
+  }
+}
