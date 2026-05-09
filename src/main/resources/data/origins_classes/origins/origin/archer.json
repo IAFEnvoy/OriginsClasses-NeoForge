@@ -1,7 +1,6 @@
 {
   "powers": [
-    "origins_classes:no_projectile_divergence",
-    "origins_classes:less_bow_slowdown"
+    "#origins_classes:archer"
   ],
   "icon": {
     "id": "minecraft:bow"

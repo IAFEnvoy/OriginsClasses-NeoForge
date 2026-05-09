@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "origins_classes:no_projectile_divergence",
+    "origins_classes:less_bow_slowdown"
+  ]
+}

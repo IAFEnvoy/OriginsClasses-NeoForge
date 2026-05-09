@@ -1,7 +1,6 @@
 {
   "powers": [
-    "origins_classes:trade_availability",
-    "origins_classes:rare_wandering_loot"
+    "#origins_classes:merchant"
   ],
   "icon": {
     "id": "minecraft:emerald"

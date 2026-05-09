@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "origins_classes:sneaky",
+    "origins_classes:stealth",
+    "origins_classes:stealth_core/damage_boost",
+    "origins_classes:stealth_core/overlay",
+    "origins_classes:stealth_core/silent_step",
+    "origins_classes:stealth_core/tick"
+  ]
+}

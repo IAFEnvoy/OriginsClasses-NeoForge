@@ -1,7 +1,6 @@
 {
   "powers": [
-    "origins_classes:more_attack_damage",
-    "origins_classes:less_shield_slowdown"
+    "#origins_classes:warrior"
   ],
   "icon": {
     "id": "minecraft:iron_sword"

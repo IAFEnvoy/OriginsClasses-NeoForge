@@ -1,7 +1,6 @@
 {
   "powers": [
-    "origins_classes:explorer_kit",
-    "origins_classes:no_sprint_exhaustion"
+    "#origins_classes:explorer"
   ],
   "icon": {
     "id": "minecraft:compass"

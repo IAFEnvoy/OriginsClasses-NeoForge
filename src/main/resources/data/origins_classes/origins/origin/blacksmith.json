@@ -1,15 +1,6 @@
 {
   "powers": [
-    "origins_classes:quality_equipment/chestplate",
-    "origins_classes:quality_equipment/digger",
-    "origins_classes:quality_equipment/helmet",
-    "origins_classes:quality_equipment/leggings",
-    "origins_classes:quality_equipment/melee",
-    "origins_classes:quality_equipment/range",
-    "origins_classes:quality_equipment/shield",
-    "origins_classes:quality_equipment/shoes",
-    "origins_classes:efficient_repairs/less_material_cost",
-    "origins_classes:efficient_repairs/more_combine_durability"
+    "#origins_classes:blacksmith"
   ],
   "icon": {
     "id": "minecraft:iron_ingot"

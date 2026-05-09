@@ -1,7 +1,6 @@
 {
   "powers": [
-    "origins_classes:more_stone_break_speed",
-    "origins_classes:no_mining_exhaustion"
+    "#origins_classes:miner"
   ],
   "icon": {
     "id": "minecraft:iron_pickaxe"

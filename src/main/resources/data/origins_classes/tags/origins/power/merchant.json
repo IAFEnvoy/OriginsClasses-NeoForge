@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "origins_classes:trade_availability",
+    "origins_classes:rare_wandering_loot"
+  ]
+}

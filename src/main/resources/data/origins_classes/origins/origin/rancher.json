@@ -1,7 +1,6 @@
 {
   "powers": [
-    "origins_classes:twin_breeding",
-    "origins_classes:more_animal_loot"
+    "#origins_classes:rancher"
   ],
   "icon": {
     "id": "minecraft:lead"
