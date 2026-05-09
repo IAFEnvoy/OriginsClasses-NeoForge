@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.At;
 @Mixin(BrewingRecipeRegistry.class)
 public class BrewingRecipeRegistryMixin {
     @ModifyReturnValue(method = "getOutput", at = @At("RETURN"), remap = false)
-    private static ItemStack originsClasses$handleAdditionalPotionNbt(ItemStack output, ItemStack input, ItemStack ingredient) {
+    private static ItemStack handleAdditionalPotionNbt(ItemStack output, ItemStack input, ItemStack ingredient) {
         if (output.getItem() instanceof PotionItem && input.has(OCDataComponents.POTION_BONUS))
             output.set(OCDataComponents.POTION_BONUS, Unit.INSTANCE);
         return output;

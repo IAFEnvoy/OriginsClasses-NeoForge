@@ -27,19 +27,19 @@ public abstract class AbstractFurnaceBlockEntityMixin extends BaseContainerBlock
     }
 
     @Inject(method = "awardUsedRecipesAndPopExperience", at = @At("HEAD"))
-    private void originsClasses$cachePlayerAndPos(ServerPlayer player, CallbackInfo ci) {
+    private void cachePlayerAndPos(ServerPlayer player, CallbackInfo ci) {
         CACHED_PLAYER = player;
         CACHED_BLOCK_POS = this.worldPosition;
     }
 
     @Inject(method = "awardUsedRecipesAndPopExperience", at = @At("TAIL"))
-    private void originsClasses$resetPlayerAndPos(ServerPlayer player, CallbackInfo ci) {
+    private void resetPlayerAndPos(ServerPlayer player, CallbackInfo ci) {
         CACHED_PLAYER = null;
         CACHED_BLOCK_POS = null;
     }
 
     @ModifyVariable(method = "createExperience", at = @At("HEAD"), argsOnly = true)
-    private static float originsClasses$modifyRecipeXp(float xp) {
+    private static float modifyRecipeXp(float xp) {
         if (CACHED_PLAYER != null && CACHED_BLOCK_POS != null)
             return OriginDataHolder.get(CACHED_PLAYER).getHelper().modify(ModifyFurnaceXPPower.class, cp -> cp.getBlockCondition().test(CACHED_PLAYER.level(), CACHED_BLOCK_POS), xp);
         return xp;

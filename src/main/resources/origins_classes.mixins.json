@@ -23,11 +23,12 @@
     "TransientCraftingContainerMixin",
     "accessor.LivingEntityAccessor",
     "accessor.LootTableAccessor",
-    "integration.CookingPotResultSlotMixin",
+    "integration.FarmersDelightWithPlayerSlotMixin",
     "integration.ModifyFoodPowerMixin",
     "integration.SkilletItemMixin",
-    "slot.WithPlayerSlotMixin",
-    "slot.SlotMixin"
+    "integration.SlotItemHandlerMixin",
+    "slot.SlotMixin",
+    "slot.WithPlayerSlotMixin"
   ],
   "client": [
     "ClientSideMerchantMixin",

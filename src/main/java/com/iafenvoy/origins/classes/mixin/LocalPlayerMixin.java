@@ -24,8 +24,7 @@ public abstract class LocalPlayerMixin extends AbstractClientPlayer {
     }
 
     @ModifyConstant(method = "aiStep", constant = @Constant(floatValue = 0.2F))
-    private float originsClasses$modifyItemUseSlowdown(float originalSlowdown) {
+    private float modifyItemUseSlowdown(float originalSlowdown) {
         return ModifySpeedOnItemUsePower.modifySlowDown(this, originalSlowdown);
     }
-
 }

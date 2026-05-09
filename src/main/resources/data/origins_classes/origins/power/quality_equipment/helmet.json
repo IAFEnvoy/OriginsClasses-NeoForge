@@ -7,9 +7,11 @@
         "type": "origins_classes:helmet"
       },
       {
-        "type": "origins:has_power",
-        "power": "origins_classes:items/tough_helmet",
-        "inverted": true
+        "type": "origins:not",
+        "condition": {
+          "type": "origins:has_power",
+          "power": "origins_classes:items/tough_helmet"
+        }
       }
     ]
   },

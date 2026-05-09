@@ -24,12 +24,12 @@ public class SkilletItemMixin {
     private static Player originsClasses$player;
 
     @Inject(method = "lambda$finishUsingItem$0", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/crafting/CampfireCookingRecipe;assemble(Lnet/minecraft/world/item/crafting/SingleRecipeInput;Lnet/minecraft/core/HolderLookup$Provider;)Lnet/minecraft/world/item/ItemStack;", shift = At.Shift.AFTER), locals = LocalCapture.CAPTURE_FAILHARD)
-    private static void originsClasses$storeCraftResult(ItemStack cookingStack, Level level, Player player, ItemStack stack, RecipeHolder<CampfireCookingRecipe> recipe, CallbackInfo ci) {
+    private static void storeCraftResult(ItemStack cookingStack, Level level, Player player, ItemStack stack, RecipeHolder<CampfireCookingRecipe> recipe, CallbackInfo ci) {
         originsClasses$player = player;
     }
 
     @ModifyVariable(method = "lambda$finishUsingItem$0", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Inventory;add(Lnet/minecraft/world/item/ItemStack;)Z"), name = "resultStack")
-    private static ItemStack originsClasses$modifyCraftResult(ItemStack resultStack) {
+    private static ItemStack modifyCraftResult(ItemStack resultStack) {
         ModifyCraftResultEvent event = new ModifyCraftResultEvent(originsClasses$player, resultStack, ModifyCraftResultEvent.CraftingResultType.SKILLET);
         NeoForge.EVENT_BUS.post(event);
         return event.getCrafted();

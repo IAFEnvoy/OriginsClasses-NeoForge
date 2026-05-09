@@ -29,7 +29,7 @@ import org.spongepowered.asm.mixin.injection.At;
 public class AbstractCauldronBlockMixin {
     //We have to do this as ActionOnBlockUsePower is bad at handling continous block state change
     @ModifyReturnValue(method = "useItemOn", at = @At("RETURN"))
-    private ItemInteractionResult originsClasses$addPotionBonus(ItemInteractionResult original, ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+    private ItemInteractionResult addPotionBonus(ItemInteractionResult original, ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         if (state.is(Blocks.WATER_CAULDRON) && state.getValue(LayeredCauldronBlock.LEVEL) > 0)
             if (stack.getItem() instanceof PotionItem && stack.getOrDefault(DataComponents.POTION_CONTENTS, PotionContents.EMPTY).hasEffects() && !stack.has(OCDataComponents.POTION_BONUS))
                 if (OriginDataHolder.get(player).hasActivePower(PotionBonusPower.class)) {

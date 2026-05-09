@@ -43,12 +43,12 @@ public abstract class AbstractVillagerMixin extends AgeableMob {
     }
 
     @Inject(method = "notifyTrade", at = @At("TAIL"))
-    private void originsClasses$infiniteTrade(MerchantOffer offer, CallbackInfo ci) {
+    private void infiniteTrade(MerchantOffer offer, CallbackInfo ci) {
         if (OriginDataHolder.get(this.tradingPlayer).hasActivePower(InfiniteTradePower.class)) --offer.uses;
     }
 
     @Inject(method = "setTradingPlayer", at = @At("HEAD"))
-    private void originsClasses$addAdditionalOffers(Player customer, CallbackInfo ci) {
+    private void addAdditionalOffers(Player customer, CallbackInfo ci) {
         if ((Object) this instanceof WanderingTrader) {
             if (OriginDataHolder.get(customer).hasActivePower(RareWanderingLootPower.class)) {
                 if (this.originsClasses$additionalOffers == null) {
@@ -65,7 +65,7 @@ public abstract class AbstractVillagerMixin extends AgeableMob {
     }
 
     @Inject(method = "addAdditionalSaveData", at = @At("TAIL"))
-    private void originsClasses$writeAdditionalOffersToTag(CompoundTag tag, CallbackInfo ci) {
+    private void writeAdditionalOffersToTag(CompoundTag tag, CallbackInfo ci) {
         if (this.originsClasses$additionalOffers != null) {
             tag.put("AdditionalOffers", MerchantOffers.CODEC.encodeStart(RegistryOps.create(NbtOps.INSTANCE, this.tradingPlayer.registryAccess()), this.originsClasses$additionalOffers).getOrThrow());
             tag.putInt("OfferCountNoAdditional", this.originsClasses$offerCountWithoutAdditional);
@@ -73,7 +73,7 @@ public abstract class AbstractVillagerMixin extends AgeableMob {
     }
 
     @Inject(method = "readAdditionalSaveData", at = @At("TAIL"))
-    private void originsClasses$readAdditionalOffersFromTag(CompoundTag tag, CallbackInfo ci) {
+    private void readAdditionalOffersFromTag(CompoundTag tag, CallbackInfo ci) {
         if (tag.contains("AdditionalOffers")) {
             this.originsClasses$additionalOffers = MerchantOffers.CODEC.parse(RegistryOps.create(NbtOps.INSTANCE, this.tradingPlayer.registryAccess()), tag.getCompound("AdditionalOffers")).getOrThrow();
             this.originsClasses$offerCountWithoutAdditional = tag.getInt("OfferCountNoAdditional");
@@ -86,7 +86,6 @@ public abstract class AbstractVillagerMixin extends AgeableMob {
         MerchantHelper helper = MerchantHelper.instance();
         RandomSource random = RandomSource.create();
         Item desireditem = helper.randomObtainableItem(random, helper.blacklistItems);
-
         offers.add(new MerchantOffer(
                 new ItemCost(Items.EMERALD, random.nextInt(12) + 6),
                 MerchantHelper.randomEnchantedItemStack(
@@ -97,17 +96,14 @@ public abstract class AbstractVillagerMixin extends AgeableMob {
                 5,
                 0.05F)
         );
-
         offers.add(new MerchantOffer(
                 new ItemCost(desireditem, 1 + random.nextInt(Math.min(16, desireditem.getDefaultInstance().getMaxStackSize()))),
                 MerchantHelper.randomEnchantedItemStack(helper.randomObtainableItem(random, helper.blacklistItems)
-                        , random, 0.5F, 30, this.registryAccess()
-                ),
+                        , random, 0.5F, 30, this.registryAccess()),
                 1,
                 5,
                 0.05F)
         );
-
         return offers;
     }
 }

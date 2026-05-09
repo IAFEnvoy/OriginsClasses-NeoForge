@@ -31,17 +31,17 @@ public class AbstractArrowMixin implements AbstractArrowPotionBonusAccessor {
     }
 
     @Inject(method = "addAdditionalSaveData", at = @At("TAIL"))
-    private void originsClasses$writeAdditionalPotionNbt(CompoundTag nbt, CallbackInfo ci) {
+    private void writeAdditionalPotionNbt(CompoundTag nbt, CallbackInfo ci) {
         if (this.originsClasses$hasPotionBonus) nbt.putBoolean(POTION_BONUS_NBT_KEY, true);
     }
 
     @Inject(method = "readAdditionalSaveData", at = @At("TAIL"))
-    private void originsClasses$readAdditionalPotionNbt(CompoundTag nbt, CallbackInfo ci) {
+    private void readAdditionalPotionNbt(CompoundTag nbt, CallbackInfo ci) {
         this.originsClasses$hasPotionBonus = nbt.getBoolean(POTION_BONUS_NBT_KEY);
     }
 
     @ModifyReturnValue(method = "getPickupItem", at = @At("RETURN"))
-    private ItemStack originsClasses$storeAdditionalPotionNbt(ItemStack original) {
+    private ItemStack storeAdditionalPotionNbt(ItemStack original) {
         if (this.originsClasses$hasPotionBonus) original.set(OCDataComponents.POTION_BONUS, Unit.INSTANCE);
         return original;
     }

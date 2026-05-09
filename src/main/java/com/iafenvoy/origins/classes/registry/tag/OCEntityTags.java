@@ -7,7 +7,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 
 public class OCEntityTags {
-    public static final TagKey<EntityType<?>> INFINITE_TRADER = tag(OriginsClasses.identifier("infinite_trader"));
+    public static final TagKey<EntityType<?>> INFINITE_TRADER = tag(ResourceLocation.fromNamespaceAndPath(OriginsClasses.MOD_ID, "infinite_trader"));
 
     private static TagKey<EntityType<?>> tag(ResourceLocation id) {
         return TagKey.create(Registries.ENTITY_TYPE, id);

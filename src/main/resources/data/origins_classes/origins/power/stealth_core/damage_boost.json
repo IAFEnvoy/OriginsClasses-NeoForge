@@ -1,13 +1,14 @@
 {
   "type": "origins:modify_damage_dealt",
   "modifier": {
-    "name": "Stealth Damage Multiplier",
     "value": 1,
     "operation": "multiply_base_additive"
   },
   "damage_condition": {
-    "type": "origins:projectile",
-    "inverted": true
+    "type": "origins:not",
+    "condition": {
+      "type": "origins:projectile"
+    }
   },
   "bientity_condition": {
     "type": "origins_classes:yaw_diff",

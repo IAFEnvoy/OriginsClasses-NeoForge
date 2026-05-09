@@ -1,7 +1,6 @@
 {
   "type": "origins_classes:modify_enchanting_level",
   "modifier": {
-    "name": "Cleric Enchanting Bonus",
     "value": 10.0,
     "operation": "add_base_early"
   }

@@ -20,17 +20,17 @@ public abstract class AnvilMenuMixin extends ItemCombinerMenu {
     }
 
     @ModifyConstant(method = "createResult", constant = @Constant(intValue = 4, ordinal = 0))
-    private int originsClasses$modfifyRepairMaterialCost0(int original) {
+    private int modfifyRepairMaterialCost0(int original) {
         return Mth.clamp(Mth.floor(OriginDataHolder.get(this.player).getHelper().modify(ModifyRepairMaterialCostPower.class, original)), 1, Integer.MAX_VALUE);
     }
 
     @ModifyConstant(method = "createResult", constant = @Constant(intValue = 4, ordinal = 1))
-    private int originsClasses$modfifyRepairMaterialCost1(int original) {
+    private int modfifyRepairMaterialCost1(int original) {
         return Mth.clamp(Mth.floor(OriginDataHolder.get(this.player).getHelper().modify(ModifyRepairMaterialCostPower.class, original)), 1, Integer.MAX_VALUE);
     }
 
     @ModifyConstant(method = "createResult", constant = @Constant(intValue = 12, ordinal = 0))
-    private int originsClasses$modifyCombineRepairDurabilityBonus(int original) {
+    private int modifyCombineRepairDurabilityBonus(int original) {
         return Mth.clamp(Mth.floor(OriginDataHolder.get(this.player).getHelper().modify(ModifyCombineRepairDurabilityPower.class, original)), 0, 100);
     }
 }

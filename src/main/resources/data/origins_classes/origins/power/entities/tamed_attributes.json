@@ -3,13 +3,11 @@
   "modifier": [
     {
       "attribute": "minecraft:generic.max_health",
-      "name": "Beastmaster Bonus",
       "value": 0.3,
       "operation": "add_multiplied_base"
     },
     {
       "attribute": "minecraft:generic.attack_damage",
-      "name": "Beastmaster Bonus",
       "value": 1.5,
       "operation": "add_value"
     }

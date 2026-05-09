@@ -23,19 +23,19 @@ public class EnchantmentMenuMixin {
     private Player originsClasses$enchanter;
 
     @Inject(method = "<init>(ILnet/minecraft/world/entity/player/Inventory;Lnet/minecraft/world/inventory/ContainerLevelAccess;)V", at = @At("TAIL"))
-    private void originsClasses$saveEnchanter(int syncId, Inventory playerInventory, ContainerLevelAccess context, CallbackInfo ci) {
+    private void saveEnchanter(int syncId, Inventory playerInventory, ContainerLevelAccess context, CallbackInfo ci) {
         this.originsClasses$enchanter = playerInventory.player;
     }
 
     @ModifyVariable(method = "slotsChanged", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/inventory/ContainerLevelAccess;execute(Ljava/util/function/BiConsumer;)V"))
-    private ItemStack originsClasses$storeEnchanter(ItemStack stack) {
+    private ItemStack storeEnchanter(ItemStack stack) {
         if (this.originsClasses$enchanter != null)
             stack.set(OCDataComponents.ENCHANTER, this.originsClasses$enchanter.getUUID());
         return stack;
     }
 
     @Inject(method = "slotsChanged", at = @At("TAIL"))
-    private void originsClasses$clearEnchanter(Container inventory, CallbackInfo ci) {
+    private void clearEnchanter(Container inventory, CallbackInfo ci) {
         inventory.getItem(0).remove(OCDataComponents.ENCHANTER);
     }
 }

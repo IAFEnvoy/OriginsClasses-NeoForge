@@ -3,13 +3,14 @@ package com.iafenvoy.origins.classes.config;
 import com.iafenvoy.jupiter.config.container.AutoInitConfigContainer;
 import com.iafenvoy.jupiter.config.entry.BooleanEntry;
 import com.iafenvoy.origins.classes.OriginsClasses;
+import net.minecraft.resources.ResourceLocation;
 
 public class OCClientConfig extends AutoInitConfigContainer {
     public static final OCClientConfig INSTANCE = new OCClientConfig();
     public final General general = new General();
 
     public OCClientConfig() {
-        super(OriginsClasses.identifier("client"), "config.origins_classes.title", "./config/origins_classes.json");
+        super(ResourceLocation.fromNamespaceAndPath(OriginsClasses.MOD_ID, "client"), "config.origins_classes.title", "./config/origins_classes.json");
     }
 
     public static class General extends AutoInitConfigCategoryBase {

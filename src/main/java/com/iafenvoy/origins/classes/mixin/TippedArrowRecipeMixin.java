@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(TippedArrowRecipe.class)
 public class TippedArrowRecipeMixin {
     @Inject(method = "assemble(Lnet/minecraft/world/item/crafting/CraftingInput;Lnet/minecraft/core/HolderLookup$Provider;)Lnet/minecraft/world/item/ItemStack;", at = @At("RETURN"))
-    private void originsClasses$handleAdditionalPotionNbt(CraftingInput input, HolderLookup.Provider registries, CallbackInfoReturnable<ItemStack> cir) {
+    private void handleAdditionalPotionNbt(CraftingInput input, HolderLookup.Provider registries, CallbackInfoReturnable<ItemStack> cir) {
         ItemStack result = cir.getReturnValue();
         if (!result.isEmpty() && input.getItem(1 + input.width()).has(OCDataComponents.POTION_BONUS))
             result.set(OCDataComponents.POTION_BONUS, Unit.INSTANCE);

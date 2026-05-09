@@ -1,7 +1,6 @@
 {
   "type": "origins_classes:modify_combine_repair_durability",
   "modifier": {
-    "name": "Effecient Repair",
     "value": 1,
     "operation": "multiply_base_additive"
   },

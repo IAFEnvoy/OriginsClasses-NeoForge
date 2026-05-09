@@ -18,14 +18,13 @@ import java.util.Objects;
 
 @Mixin(Arrow.class)
 public class ArrowMixin {
-
     @Inject(method = "setPotionContents", at = @At("TAIL"))
-    private void originsClasses$initFromAdditionalPotionNbt(PotionContents potionContents, CallbackInfo ci) {
+    private void initFromAdditionalPotionNbt(PotionContents potionContents, CallbackInfo ci) {
         ((AbstractArrowPotionBonusAccessor) this).originsClasses$setPotionBonus(Objects.requireNonNullElse(((PotionContentsWithStackAccessor) (Object) potionContents).originsClasses$getStack(), ItemStack.EMPTY).has(OCDataComponents.POTION_BONUS));
     }
 
     @ModifyArg(method = "doPostHurtEffects", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;addEffect(Lnet/minecraft/world/effect/MobEffectInstance;Lnet/minecraft/world/entity/Entity;)Z"), index = 0)
-    private MobEffectInstance originsClasses$handlePotionBonus(MobEffectInstance effect) {
+    private MobEffectInstance handlePotionBonus(MobEffectInstance effect) {
         return ((AbstractArrowPotionBonusAccessor) this).originsClasses$hasPotionBonus() ? ClericHelper.applyPotionBonus(effect) : effect;
     }
 }

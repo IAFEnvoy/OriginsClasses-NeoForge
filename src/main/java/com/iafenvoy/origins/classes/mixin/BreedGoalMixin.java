@@ -18,13 +18,12 @@ public class BreedGoalMixin {
     @Shadow
     @Final
     protected Animal animal;
-
     @Shadow
     @Nullable
     protected Animal partner;
 
     @Inject(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/ai/goal/BreedGoal;breed()V"), cancellable = true)
-    private void originsClasses$modifyBreeding(CallbackInfo ci) {
+    private void modifyBreeding(CallbackInfo ci) {
         ServerPlayer player = this.animal.getLoveCause();
         if (player != null && this.partner != null) {
             int amount = ModifyBreedingPower.getBreedAmount(player, this.animal, this.partner);
@@ -34,10 +33,8 @@ public class BreedGoalMixin {
                 this.animal.resetLove();
                 this.partner.resetLove();
                 ci.cancel();
-            } else if (amount > 1)
-                for (int i = 1; i < amount; i++)
-                    this.animal.spawnChildFromBreeding(player.serverLevel(), this.partner);
+            } else if (amount > 1) for (int i = 1; i < amount; i++)
+                this.animal.spawnChildFromBreeding(player.serverLevel(), this.partner);
         }
     }
-
 }

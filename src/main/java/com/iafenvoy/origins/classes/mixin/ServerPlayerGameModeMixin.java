@@ -26,10 +26,6 @@ public abstract class ServerPlayerGameModeMixin {
     @Final
     @Shadow
     protected ServerPlayer player;
-
-    @Shadow
-    public abstract void destroyAndAck(BlockPos pPos, int i, String reason);
-
     @Unique
     private BlockState originsClasses$justMinedState;
     @Unique
@@ -37,19 +33,22 @@ public abstract class ServerPlayerGameModeMixin {
     @Unique
     private boolean originsClasses$wasSneakingWhenBlockBreakStarted = false;
 
+    @Shadow
+    public abstract void destroyAndAck(BlockPos pPos, int i, String reason);
+
     @Inject(method = "handleBlockBreakAction", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockState;getDestroyProgress(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;)F", ordinal = 0))
-    private void originsClasses$saveSneakingState(BlockPos pPos, ServerboundPlayerActionPacket.Action pAction, Direction pDirection, int p_215123_, int p_215124_, CallbackInfo ci) {
+    private void saveSneakingState(BlockPos pPos, ServerboundPlayerActionPacket.Action pAction, Direction pDirection, int p_215123_, int p_215124_, CallbackInfo ci) {
         this.originsClasses$wasSneakingWhenBlockBreakStarted = this.player.isShiftKeyDown();
         PacketDistributor.sendToPlayer(this.player, new MultiMiningS2CPayload(!this.originsClasses$wasSneakingWhenBlockBreakStarted));
     }
 
     @Inject(method = "destroyAndAck", at = @At("HEAD"))
-    private void originsClasses$saveBlockStateForMultiMine(BlockPos pos, int i, String reason, CallbackInfo ci) {
+    private void saveBlockStateForMultiMine(BlockPos pos, int i, String reason, CallbackInfo ci) {
         this.originsClasses$justMinedState = this.level.getBlockState(pos);
     }
 
     @Inject(method = "destroyAndAck", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/level/ServerPlayerGameMode;debugLogging(Lnet/minecraft/core/BlockPos;ZILjava/lang/String;)V", ordinal = 0))
-    private void originsClasses$multiMinePower(BlockPos pos, int i, String reason, CallbackInfo ci) {
+    private void multiMinePower(BlockPos pos, int i, String reason, CallbackInfo ci) {
         if (!this.originsClasses$wasSneakingWhenBlockBreakStarted && !this.originsClasses$performingMultiMine) {
             this.originsClasses$performingMultiMine = true;
             ItemStack tool = this.player.getMainHandItem().copy();

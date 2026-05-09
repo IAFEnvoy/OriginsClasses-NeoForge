@@ -17,7 +17,7 @@ public abstract class ServerPlayerMixin extends LivingEntity {
     }
 
     @ModifyConstant(method = "checkMovementStatistics", constant = @Constant(floatValue = 0.1F, ordinal = 0))
-    private float originsClasses$removeSprintExaustion(float orginal) {
-        return OriginDataHolder.get(this).hasActivePower(NoSprintExhaustionPower.class) ? 0 : orginal;
+    private float removeSprintExhaustion(float original) {
+        return OriginDataHolder.get(this).hasActivePower(NoSprintExhaustionPower.class) ? 0 : original;
     }
 }

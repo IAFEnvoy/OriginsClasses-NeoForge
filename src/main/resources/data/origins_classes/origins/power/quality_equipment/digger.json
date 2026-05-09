@@ -7,9 +7,11 @@
         "type": "origins_classes:diggers"
       },
       {
-        "type": "origins:has_power",
-        "power": "origins_classes:items/effecient_digger",
-        "inverted": true
+        "type": "origins:not",
+        "condition": {
+          "type": "origins:has_power",
+          "power": "origins_classes:items/effecient_digger"
+        }
       }
     ]
   },

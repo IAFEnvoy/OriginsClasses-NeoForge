@@ -7,9 +7,11 @@
         "type": "origins_classes:shoes"
       },
       {
-        "type": "origins:has_power",
-        "power": "origins_classes:items/tough_shoes",
-        "inverted": true
+        "type": "origins:not",
+        "condition": {
+          "type": "origins:has_power",
+          "power": "origins_classes:items/tough_shoes"
+        }
       }
     ]
   },

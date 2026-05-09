@@ -1,7 +1,6 @@
 {
   "type": "origins_classes:modify_bone_meal",
   "modifier": {
-    "name": "Farmer Bonemeal Bonus",
     "value": 1.0,
     "operation": "multiply_base_additive"
   }

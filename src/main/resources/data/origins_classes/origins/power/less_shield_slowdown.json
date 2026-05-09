@@ -1,7 +1,6 @@
 {
   "type": "origins_classes:modify_speed_on_item_use",
   "modifier": {
-    "name": "Archer Bonus",
     "value": 2.0,
     "operation": "multiply_base_additive"
   },

@@ -17,12 +17,12 @@ public class ProjectileMixin {
     private Entity originsClasses$cachedShooter;
 
     @Inject(method = "shootFromRotation", at = @At("HEAD"))
-    private void originsClasses$cacheShooter(Entity entity, float p, float y, float r, float s, float d, CallbackInfo ci) {
+    private void cacheShooter(Entity entity, float p, float y, float r, float s, float d, CallbackInfo ci) {
         this.originsClasses$cachedShooter = entity;
     }
 
     @ModifyVariable(method = "shoot", at = @At("HEAD"), ordinal = 1, argsOnly = true)
-    private float originsClasses$modifyDivergence(float oldDivergence) {
+    private float modifyDivergence(float oldDivergence) {
         if (this.originsClasses$cachedShooter != null) {
             float newDivergence = OriginDataHolder.get(this.originsClasses$cachedShooter).getHelper().modify(ModifyProjectileDivergencePower.class, oldDivergence);
             this.originsClasses$cachedShooter = null;

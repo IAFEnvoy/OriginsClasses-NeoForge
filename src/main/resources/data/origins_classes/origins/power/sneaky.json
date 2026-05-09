@@ -2,7 +2,6 @@
   "type": "origins:attribute",
   "modifier": {
     "attribute": "neoforge:nametag_distance",
-    "name": "No Nametag Render",
     "value": -1.0,
     "operation": "add_multiplied_total"
   }
