@@ -1,0 +1,17 @@
+{
+  "type": "origins:multiple",
+  "less_material_cost": {
+    "type": "origins_classes:modify_repair_material_cost",
+    "modifier": {
+      "value": -0.5,
+      "operation": "multiply_base_additive"
+    }
+  },
+  "more_combine_durability": {
+    "type": "origins_classes:modify_combine_repair_durability",
+    "modifier": {
+      "value": 1,
+      "operation": "multiply_base_additive"
+    }
+  }
+}

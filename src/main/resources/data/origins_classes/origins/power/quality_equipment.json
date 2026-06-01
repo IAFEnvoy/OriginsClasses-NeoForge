@@ -1,0 +1,163 @@
+{
+  "type": "origins:multiple",
+  "melee": {
+    "type": "origins_classes:modify_craft_result",
+    "item_condition": {
+      "type": "origins:and",
+      "conditions": [
+        {
+          "type": "origins_classes:melee"
+        },
+        {
+          "type": "origins:has_power",
+          "power": "origins_classes:items/sharp_blade",
+          "inverted": true
+        }
+      ]
+    },
+    "item_action": {
+      "type": "origins:modify",
+      "modifier": "origins_classes:blacksmith/melee"
+    }
+  },
+  "range": {
+    "type": "origins_classes:modify_craft_result",
+    "item_condition": {
+      "type": "origins:and",
+      "conditions": [
+        {
+          "type": "origins_classes:range"
+        },
+        {
+          "type": "origins:has_power",
+          "power": "origins_classes:items/strong_string",
+          "inverted": true
+        }
+      ]
+    },
+    "item_action": {
+      "type": "origins:modify",
+      "modifier": "origins_classes:blacksmith/range"
+    }
+  },
+  "digger": {
+    "type": "origins_classes:modify_craft_result",
+    "item_condition": {
+      "type": "origins:and",
+      "conditions": [
+        {
+          "type": "origins_classes:diggers"
+        },
+        {
+          "type": "origins:has_power",
+          "power": "origins_classes:items/effecient_digger",
+          "inverted": true
+        }
+      ]
+    },
+    "item_action": {
+      "type": "origins:modify",
+      "modifier": "origins_classes:blacksmith/digger"
+    }
+  },
+  "shield": {
+    "type": "origins_classes:modify_craft_result",
+    "item_condition": {
+      "type": "origins:and",
+      "conditions": [
+        {
+          "type": "origins_classes:shield"
+        },
+        {
+          "type": "origins:has_power",
+          "power": "origins_classes:items/steady_shield",
+          "inverted": true
+        }
+      ]
+    },
+    "item_action": {
+      "type": "origins:modify",
+      "modifier": "origins_classes:blacksmith/shield"
+    }
+  },
+  "helmet": {
+    "type": "origins_classes:modify_craft_result",
+    "item_condition": {
+      "type": "origins:and",
+      "conditions": [
+        {
+          "type": "origins_classes:helmet"
+        },
+        {
+          "type": "origins:has_power",
+          "power": "origins_classes:items/tough_helmet",
+          "inverted": true
+        }
+      ]
+    },
+    "item_action": {
+      "type": "origins:modify",
+      "modifier": "origins_classes:blacksmith/helmet"
+    }
+  },
+  "chestplate": {
+    "type": "origins_classes:modify_craft_result",
+    "item_condition": {
+      "type": "origins:and",
+      "conditions": [
+        {
+          "type": "origins_classes:chestplate"
+        },
+        {
+          "type": "origins:has_power",
+          "power": "origins_classes:items/tough_chestplate",
+          "inverted": true
+        }
+      ]
+    },
+    "item_action": {
+      "type": "origins:modify",
+      "modifier": "origins_classes:blacksmith/chestplate"
+    }
+  },
+  "leggings": {
+    "type": "origins_classes:modify_craft_result",
+    "item_condition": {
+      "type": "origins:and",
+      "conditions": [
+        {
+          "type": "origins_classes:leggings"
+        },
+        {
+          "type": "origins:has_power",
+          "power": "origins_classes:items/tough_leggings",
+          "inverted": true
+        }
+      ]
+    },
+    "item_action": {
+      "type": "origins:modify",
+      "modifier": "origins_classes:blacksmith/leggings"
+    }
+  },
+  "shoes": {
+    "type": "origins_classes:modify_craft_result",
+    "item_condition": {
+      "type": "origins:and",
+      "conditions": [
+        {
+          "type": "origins_classes:shoes"
+        },
+        {
+          "type": "origins:has_power",
+          "power": "origins_classes:items/tough_shoes",
+          "inverted": true
+        }
+      ]
+    },
+    "item_action": {
+      "type": "origins:modify",
+      "modifier": "origins_classes:blacksmith/shoes"
+    }
+  }
+}

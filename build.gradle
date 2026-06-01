@@ -120,7 +120,7 @@ configurations {
 
 dependencies {
     implementation "maven.modrinth:jupiter:Jpcw76rq"
-    implementation "maven.modrinth:origins-neoforge:gb8M3Pfw"
+    implementation "maven.modrinth:origins-neoforge:9Dji4O0h"
 
     compileOnly "maven.modrinth:farmers-delight:9gp7w8NC"
 }

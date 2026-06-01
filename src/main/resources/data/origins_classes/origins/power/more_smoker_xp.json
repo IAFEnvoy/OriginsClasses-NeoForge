@@ -5,7 +5,7 @@
     "operation": "multiply_base_additive"
   },
   "block_condition": {
-    "type": "origins:block",
+    "type": "origins:block_id",
     "block": "minecraft:smoker"
   }
 }

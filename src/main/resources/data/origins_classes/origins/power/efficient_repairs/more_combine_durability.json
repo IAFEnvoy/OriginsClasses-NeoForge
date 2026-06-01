@@ -1,8 +1,0 @@
-{
-  "type": "origins_classes:modify_combine_repair_durability",
-  "modifier": {
-    "value": 1,
-    "operation": "multiply_base_additive"
-  },
-  "hidden": true
-}
