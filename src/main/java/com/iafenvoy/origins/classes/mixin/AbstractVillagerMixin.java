@@ -19,6 +19,7 @@ import net.minecraft.world.item.trading.ItemCost;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.item.trading.MerchantOffers;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
@@ -30,6 +31,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class AbstractVillagerMixin extends AgeableMob {
     @Shadow
     protected MerchantOffers offers;
+    @javax.annotation.Nullable
     @Shadow
     private Player tradingPlayer;
 
@@ -44,13 +46,14 @@ public abstract class AbstractVillagerMixin extends AgeableMob {
 
     @Inject(method = "notifyTrade", at = @At("TAIL"))
     private void infiniteTrade(MerchantOffer offer, CallbackInfo ci) {
-        if (OriginDataHolder.get(this.tradingPlayer).hasActivePower(InfiniteTradePower.class)) --offer.uses;
+        if (this.tradingPlayer != null && OriginDataHolder.get(this.tradingPlayer).hasActivePower(InfiniteTradePower.class))
+            --offer.uses;
     }
 
     @Inject(method = "setTradingPlayer", at = @At("HEAD"))
-    private void addAdditionalOffers(Player customer, CallbackInfo ci) {
+    private void addAdditionalOffers(@Nullable Player customer, CallbackInfo ci) {
         if ((Object) this instanceof WanderingTrader) {
-            if (OriginDataHolder.get(customer).hasActivePower(RareWanderingLootPower.class)) {
+            if (customer != null && OriginDataHolder.get(customer).hasActivePower(RareWanderingLootPower.class)) {
                 if (this.originsClasses$additionalOffers == null) {
                     this.originsClasses$offerCountWithoutAdditional = this.offers.size();
                     this.originsClasses$additionalOffers = this.originsClasses$buildAdditionalOffers();
@@ -66,7 +69,7 @@ public abstract class AbstractVillagerMixin extends AgeableMob {
 
     @Inject(method = "addAdditionalSaveData", at = @At("TAIL"))
     private void writeAdditionalOffersToTag(CompoundTag tag, CallbackInfo ci) {
-        if (this.originsClasses$additionalOffers != null) {
+        if (this.originsClasses$additionalOffers != null && this.tradingPlayer != null) {
             tag.put("AdditionalOffers", MerchantOffers.CODEC.encodeStart(RegistryOps.create(NbtOps.INSTANCE, this.tradingPlayer.registryAccess()), this.originsClasses$additionalOffers).getOrThrow());
             tag.putInt("OfferCountNoAdditional", this.originsClasses$offerCountWithoutAdditional);
         }
@@ -74,7 +77,7 @@ public abstract class AbstractVillagerMixin extends AgeableMob {
 
     @Inject(method = "readAdditionalSaveData", at = @At("TAIL"))
     private void readAdditionalOffersFromTag(CompoundTag tag, CallbackInfo ci) {
-        if (tag.contains("AdditionalOffers")) {
+        if (tag.contains("AdditionalOffers") && this.tradingPlayer != null) {
             this.originsClasses$additionalOffers = MerchantOffers.CODEC.parse(RegistryOps.create(NbtOps.INSTANCE, this.tradingPlayer.registryAccess()), tag.getCompound("AdditionalOffers")).getOrThrow();
             this.originsClasses$offerCountWithoutAdditional = tag.getInt("OfferCountNoAdditional");
         }

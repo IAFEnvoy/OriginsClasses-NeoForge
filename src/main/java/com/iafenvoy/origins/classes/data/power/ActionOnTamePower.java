@@ -14,6 +14,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.AnimalTameEvent;
 import net.neoforged.neoforge.event.entity.living.BabyEntitySpawnEvent;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
@@ -42,7 +43,7 @@ public class ActionOnTamePower extends Power {
     }
 
     @Override
-    public MapCodec<? extends Power> codec() {
+    public @NotNull MapCodec<? extends Power> codec() {
         return CODEC;
     }
 

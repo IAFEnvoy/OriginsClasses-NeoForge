@@ -25,6 +25,7 @@ import net.minecraft.world.level.storage.loot.entries.TagEntry;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.AddReloadListenerEvent;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -41,12 +42,12 @@ public class MerchantHelper extends SimplePreparableReloadListener<Void> {
     }
 
     @Override
-    protected Void prepare(ResourceManager resourceManager, ProfilerFiller profiler) {
+    protected @NotNull Void prepare(@NotNull ResourceManager resourceManager, @NotNull ProfilerFiller profiler) {
         return null;
     }
 
     @Override
-    protected void apply(Void nothing, ResourceManager resourceManager, ProfilerFiller profiler) {
+    protected void apply(@NotNull Void nothing, @NotNull ResourceManager resourceManager, @NotNull ProfilerFiller profiler) {
         ImmutableSet.Builder<Holder<Item>> builder = ImmutableSet.builder();
         for (LootTable lootTable : this.lootTables.listElements().map(Holder.Reference::value).toList()) {
             Queue<LootPoolEntryContainer> entryQueue = ((LootTableAccessor) lootTable).getPools().stream().flatMap(pool -> pool.entries.stream()).collect(Collectors.toCollection(LinkedList::new));

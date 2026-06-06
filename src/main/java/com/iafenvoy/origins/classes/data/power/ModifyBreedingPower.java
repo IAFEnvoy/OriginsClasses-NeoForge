@@ -13,6 +13,7 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -55,7 +56,7 @@ public class ModifyBreedingPower extends Power implements ModifierPowerHelper {
     }
 
     @Override
-    public MapCodec<? extends Power> codec() {
+    public @NotNull MapCodec<? extends Power> codec() {
         return CODEC;
     }
 
