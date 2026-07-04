@@ -1,8 +1,6 @@
 package com.iafenvoy.origins.classes.util;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.Tag;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
@@ -13,16 +11,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import java.util.*;
 
 public class CommonUtils {
-    public static final String ORIGINS_CLASSES = "OriginsClasses";
-    public static final String MODIFY_FOOD_POWERS = "ModifyFoodPowers";
-
-    public static CompoundTag getOriginsClassesTag(CompoundTag nbt) {
-        if (nbt.contains(ORIGINS_CLASSES, Tag.TAG_COMPOUND)) {
-            return nbt.getCompound(ORIGINS_CLASSES);
-        }
-        return new CompoundTag();
-    }
-
     public static int rollInt(double d, RandomSource random) {
         int i = (int) d;
         return random.nextDouble() < d - i ? i + 1 : i;

@@ -1,6 +1,6 @@
 package com.iafenvoy.origins.classes.data.power;
 
-import com.iafenvoy.origins.attachment.OriginDataHolder;
+import com.iafenvoy.origins.attachment.PowerHelper;
 import com.iafenvoy.origins.classes.event.ModifyCraftResultEvent;
 import com.iafenvoy.origins.data.action.ItemAction;
 import com.iafenvoy.origins.data.condition.ItemCondition;
@@ -51,9 +51,9 @@ public class ModifyCraftResultPower extends Power {
 
     public static ItemStack modify(Player player, ItemStack stack, ModifyCraftResultEvent.CraftingResultType type) {
         Mutable.Stack mutable = Mutable.stack(stack);
-        OriginDataHolder.get(player).getHelper().execute(ModifyCraftResultPower.class,
+        PowerHelper.get(player).execute(ModifyCraftResultPower.class,
                 p -> p.craftingResultTypes.contains(type) && p.itemCondition.test(player.level(), stack),
-                p -> p.itemAction.execute(player.level(), player, mutable.toSlotAccess()));
+                (h, p) -> p.itemAction.execute(player.level(), player, mutable.toSlotAccess()));
         return mutable.get();
     }
 }

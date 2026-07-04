@@ -1,6 +1,6 @@
 package com.iafenvoy.origins.classes.mixin;
 
-import com.iafenvoy.origins.attachment.OriginDataHolder;
+import com.iafenvoy.origins.attachment.PowerHelper;
 import com.iafenvoy.origins.classes.data.power.NoSprintExhaustionPower;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.EntityType;
@@ -18,6 +18,6 @@ public abstract class ServerPlayerMixin extends LivingEntity {
 
     @ModifyConstant(method = "checkMovementStatistics", constant = @Constant(floatValue = 0.1F, ordinal = 0))
     private float removeSprintExhaustion(float original) {
-        return OriginDataHolder.get(this).hasActivePower(NoSprintExhaustionPower.class) ? 0 : original;
+        return PowerHelper.get(this).anyActive(NoSprintExhaustionPower.class) ? 0 : original;
     }
 }

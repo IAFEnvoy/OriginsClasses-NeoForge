@@ -1,6 +1,6 @@
 package com.iafenvoy.origins.classes.data.power;
 
-import com.iafenvoy.origins.attachment.OriginDataHolder;
+import com.iafenvoy.origins.attachment.PowerHelper;
 import com.iafenvoy.origins.data._common.helper.ModifierPowerHelper;
 import com.iafenvoy.origins.data.condition.ItemCondition;
 import com.iafenvoy.origins.data.power.Power;
@@ -46,6 +46,6 @@ public class ModifySpeedOnItemUsePower extends Power implements ModifierPowerHel
 
     public static float modifySlowDown(Player player, float slowdownMultiplier) {
         ItemStack stack = player.getItemInHand(player.getUsedItemHand());
-        return Mth.clamp(OriginDataHolder.get(player).getHelper().modify(ModifySpeedOnItemUsePower.class, p -> p.itemCondition.test(player.level(), stack), slowdownMultiplier), 0.0F, 1.0F);
+        return Mth.clamp(PowerHelper.get(player).modify(ModifySpeedOnItemUsePower.class, p -> p.itemCondition.test(player.level(), stack), slowdownMultiplier), 0.0F, 1.0F);
     }
 }

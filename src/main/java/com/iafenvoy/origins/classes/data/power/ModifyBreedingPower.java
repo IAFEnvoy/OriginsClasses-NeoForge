@@ -1,6 +1,7 @@
 package com.iafenvoy.origins.classes.data.power;
 
 import com.iafenvoy.origins.attachment.OriginDataHolder;
+import com.iafenvoy.origins.attachment.PowerHelper;
 import com.iafenvoy.origins.classes.util.CommonUtils;
 import com.iafenvoy.origins.data._common.helper.ModifierPowerHelper;
 import com.iafenvoy.origins.data.action.BiEntityAction;
@@ -61,8 +62,9 @@ public class ModifyBreedingPower extends Power implements ModifierPowerHelper {
     }
 
     public static int getBreedAmount(Player player, Animal actor, Animal target) {
+        //FIXME::Use new api
         OriginDataHolder holder = OriginDataHolder.get(player);
-        return CommonUtils.rollInt(holder.streamActivePowers(ModifyBreedingPower.class)
+        return CommonUtils.rollInt(PowerHelper.get(player).streamActive(ModifyBreedingPower.class)
                 .filter(p -> p.parentsCondition.test(actor, target))
                 .reduce(1.0, (p, c) -> {
                     c.parentsAction.execute(actor, target);

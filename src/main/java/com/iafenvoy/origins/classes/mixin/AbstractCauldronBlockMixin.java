@@ -1,6 +1,6 @@
 package com.iafenvoy.origins.classes.mixin;
 
-import com.iafenvoy.origins.attachment.OriginDataHolder;
+import com.iafenvoy.origins.attachment.PowerHelper;
 import com.iafenvoy.origins.classes.data.power.PotionBonusPower;
 import com.iafenvoy.origins.classes.registry.OCDataComponents;
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
@@ -32,7 +32,7 @@ public class AbstractCauldronBlockMixin {
     private ItemInteractionResult addPotionBonus(ItemInteractionResult original, ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         if (state.is(Blocks.WATER_CAULDRON) && state.getValue(LayeredCauldronBlock.LEVEL) > 0)
             if (stack.getItem() instanceof PotionItem && stack.getOrDefault(DataComponents.POTION_CONTENTS, PotionContents.EMPTY).hasEffects() && !stack.has(OCDataComponents.POTION_BONUS))
-                if (player != null && OriginDataHolder.get(player).hasActivePower(PotionBonusPower.class)) {
+                if (player != null && PowerHelper.get(player).anyActive(PotionBonusPower.class)) {
                     stack.set(OCDataComponents.POTION_BONUS, Unit.INSTANCE);
                     LayeredCauldronBlock.lowerFillLevel(state, level, pos);
                     level.playSound(null, pos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);

@@ -1,6 +1,6 @@
 package com.iafenvoy.origins.classes.data.power;
 
-import com.iafenvoy.origins.attachment.OriginDataHolder;
+import com.iafenvoy.origins.attachment.PowerHelper;
 import com.iafenvoy.origins.data.action.BiEntityAction;
 import com.iafenvoy.origins.data.condition.BiEntityCondition;
 import com.iafenvoy.origins.data.power.Power;
@@ -48,9 +48,9 @@ public class ActionOnTamePower extends Power {
     }
 
     public static void apply(Entity player, Entity tameable) {
-        OriginDataHolder.get(player).getHelper().execute(ActionOnTamePower.class,
+        PowerHelper.get(player).execute(ActionOnTamePower.class,
                 p -> p.biEntityCondition.test(player, tameable),
-                p -> p.biEntityAction.execute(player, tameable)
+                (h, p) -> p.biEntityAction.execute(player, tameable)
         );
     }
 

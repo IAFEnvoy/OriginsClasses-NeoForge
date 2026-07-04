@@ -1,6 +1,6 @@
 package com.iafenvoy.origins.classes.mixin;
 
-import com.iafenvoy.origins.attachment.OriginDataHolder;
+import com.iafenvoy.origins.attachment.PowerHelper;
 import com.iafenvoy.origins.classes.data.power.InfiniteTradePower;
 import com.iafenvoy.origins.classes.data.power.RareWanderingLootPower;
 import com.iafenvoy.origins.classes.util.MerchantHelper;
@@ -46,14 +46,14 @@ public abstract class AbstractVillagerMixin extends AgeableMob {
 
     @Inject(method = "notifyTrade", at = @At("TAIL"))
     private void infiniteTrade(MerchantOffer offer, CallbackInfo ci) {
-        if (this.tradingPlayer != null && OriginDataHolder.get(this.tradingPlayer).hasActivePower(InfiniteTradePower.class))
+        if (this.tradingPlayer != null && PowerHelper.get(this.tradingPlayer).anyActive(InfiniteTradePower.class))
             --offer.uses;
     }
 
     @Inject(method = "setTradingPlayer", at = @At("HEAD"))
     private void addAdditionalOffers(@Nullable Player customer, CallbackInfo ci) {
         if ((Object) this instanceof WanderingTrader) {
-            if (customer != null && OriginDataHolder.get(customer).hasActivePower(RareWanderingLootPower.class)) {
+            if (customer != null && PowerHelper.get(customer).anyActive(RareWanderingLootPower.class)) {
                 if (this.originsClasses$additionalOffers == null) {
                     this.originsClasses$offerCountWithoutAdditional = this.offers.size();
                     this.originsClasses$additionalOffers = this.originsClasses$buildAdditionalOffers();

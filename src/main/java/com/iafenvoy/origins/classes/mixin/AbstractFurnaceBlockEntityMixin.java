@@ -1,6 +1,6 @@
 package com.iafenvoy.origins.classes.mixin;
 
-import com.iafenvoy.origins.attachment.OriginDataHolder;
+import com.iafenvoy.origins.attachment.PowerHelper;
 import com.iafenvoy.origins.classes.data.power.ModifyFurnaceXPPower;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
@@ -41,7 +41,7 @@ public abstract class AbstractFurnaceBlockEntityMixin extends BaseContainerBlock
     @ModifyVariable(method = "createExperience", at = @At("HEAD"), argsOnly = true)
     private static float modifyRecipeXp(float xp) {
         if (CACHED_PLAYER != null && CACHED_BLOCK_POS != null)
-            return OriginDataHolder.get(CACHED_PLAYER).getHelper().modify(ModifyFurnaceXPPower.class, cp -> cp.getBlockCondition().test(CACHED_PLAYER.level(), CACHED_BLOCK_POS), xp);
+            return PowerHelper.get(CACHED_PLAYER).modify(ModifyFurnaceXPPower.class, cp -> cp.getBlockCondition().test(CACHED_PLAYER.level(), CACHED_BLOCK_POS), xp);
         return xp;
     }
 }

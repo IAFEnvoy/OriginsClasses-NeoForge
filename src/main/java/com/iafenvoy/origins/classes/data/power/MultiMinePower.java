@@ -1,6 +1,6 @@
 package com.iafenvoy.origins.classes.data.power;
 
-import com.iafenvoy.origins.attachment.OriginDataHolder;
+import com.iafenvoy.origins.attachment.PowerHelper;
 import com.iafenvoy.origins.classes.OriginsClasses;
 import com.iafenvoy.origins.classes.util.CommonUtils;
 import com.iafenvoy.origins.data.action.EntityAction;
@@ -58,9 +58,7 @@ public class MultiMinePower extends Power {
     }
 
     public static List<BlockPos> apply(Player player, BlockPos pos, BlockState state) {
-        List<MultiMinePower> powers = OriginDataHolder.get(player).streamActivePowers(MultiMinePower.class)
-                .filter(cp -> shouldApply(cp, player, pos))
-                .toList();
+        List<MultiMinePower> powers = PowerHelper.get(player).listActive(MultiMinePower.class, cp -> shouldApply(cp, player, pos));
         OriginsClasses.LOGGER.debug(powers.size());
         for (MultiMinePower cmmp : powers) {
             List<BlockPos> affectBlocks = CommonUtils.lumberjackMultiMineRange(player, state, pos);

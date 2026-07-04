@@ -18,6 +18,7 @@ public interface DataComponentHolderMixin {
                 ((PotionContentsWithStackAccessor) (Object) contents).originsClasses$setStack(stack);
         return original;
     }
+
     @ModifyReturnValue(method = "getOrDefault", at = @At("RETURN"))
     private <T> T attackStack2(T original, DataComponentType<? extends T> component) {
         if ((DataComponentHolder) this instanceof ItemStack stack)

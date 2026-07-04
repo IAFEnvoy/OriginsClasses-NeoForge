@@ -1,6 +1,6 @@
 package com.iafenvoy.origins.classes.data.power;
 
-import com.iafenvoy.origins.attachment.OriginDataHolder;
+import com.iafenvoy.origins.attachment.PowerHelper;
 import com.iafenvoy.origins.classes.event.ModifyCraftResultEvent;
 import com.iafenvoy.origins.classes.registry.OCDataComponents;
 import com.iafenvoy.origins.data.condition.ItemCondition;
@@ -50,7 +50,7 @@ public class ModifyCraftedFoodPower extends Power {
     }
 
     public static ItemStack modify(Player player, ItemStack stack, ModifyCraftResultEvent.CraftingResultType type) {
-        List<Holder<Power>> powers = OriginDataHolder.get(player).streamActivePowers(ModifyCraftedFoodPower.class)
+        List<Holder<Power>> powers = PowerHelper.get(player).streamActive(ModifyCraftedFoodPower.class)
                 .filter(p -> p.getCraftingResultTypes().contains(type) && p.getItemCondition().test(player.level(), stack))
                 .map(ModifyCraftedFoodPower::getModifyFoodPower)
                 .toList();

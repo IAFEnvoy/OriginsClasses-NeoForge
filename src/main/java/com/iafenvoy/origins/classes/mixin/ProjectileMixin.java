@@ -1,6 +1,6 @@
 package com.iafenvoy.origins.classes.mixin;
 
-import com.iafenvoy.origins.attachment.OriginDataHolder;
+import com.iafenvoy.origins.attachment.PowerHelper;
 import com.iafenvoy.origins.classes.data.power.ModifyProjectileDivergencePower;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.projectile.Projectile;
@@ -24,7 +24,7 @@ public class ProjectileMixin {
     @ModifyVariable(method = "shoot", at = @At("HEAD"), ordinal = 1, argsOnly = true)
     private float modifyDivergence(float oldDivergence) {
         if (this.originsClasses$cachedShooter != null) {
-            float newDivergence = OriginDataHolder.get(this.originsClasses$cachedShooter).getHelper().modify(ModifyProjectileDivergencePower.class, oldDivergence);
+            float newDivergence = PowerHelper.get(this.originsClasses$cachedShooter).modify(ModifyProjectileDivergencePower.class, oldDivergence);
             this.originsClasses$cachedShooter = null;
             return newDivergence;
         }

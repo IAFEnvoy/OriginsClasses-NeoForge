@@ -1,6 +1,6 @@
 package com.iafenvoy.origins.classes.mixin;
 
-import com.iafenvoy.origins.attachment.OriginDataHolder;
+import com.iafenvoy.origins.attachment.PowerHelper;
 import com.iafenvoy.origins.classes.data.power.ModifyCombineRepairDurabilityPower;
 import com.iafenvoy.origins.classes.data.power.ModifyRepairMaterialCostPower;
 import net.minecraft.util.Mth;
@@ -20,17 +20,17 @@ public abstract class AnvilMenuMixin extends ItemCombinerMenu {
     }
 
     @ModifyConstant(method = "createResult", constant = @Constant(intValue = 4, ordinal = 0))
-    private int modfifyRepairMaterialCost0(int original) {
-        return Mth.clamp(Mth.floor(OriginDataHolder.get(this.player).getHelper().modify(ModifyRepairMaterialCostPower.class, original)), 1, Integer.MAX_VALUE);
+    private int modifyRepairMaterialCost0(int original) {
+        return Mth.clamp(Mth.floor(PowerHelper.get(this.player).modify(ModifyRepairMaterialCostPower.class, original)), 1, Integer.MAX_VALUE);
     }
 
     @ModifyConstant(method = "createResult", constant = @Constant(intValue = 4, ordinal = 1))
-    private int modfifyRepairMaterialCost1(int original) {
-        return Mth.clamp(Mth.floor(OriginDataHolder.get(this.player).getHelper().modify(ModifyRepairMaterialCostPower.class, original)), 1, Integer.MAX_VALUE);
+    private int modifyRepairMaterialCost1(int original) {
+        return Mth.clamp(Mth.floor(PowerHelper.get(this.player).modify(ModifyRepairMaterialCostPower.class, original)), 1, Integer.MAX_VALUE);
     }
 
     @ModifyConstant(method = "createResult", constant = @Constant(intValue = 12, ordinal = 0))
     private int modifyCombineRepairDurabilityBonus(int original) {
-        return Mth.clamp(Mth.floor(OriginDataHolder.get(this.player).getHelper().modify(ModifyCombineRepairDurabilityPower.class, original)), 0, 100);
+        return Mth.clamp(Mth.floor(PowerHelper.get(this.player).modify(ModifyCombineRepairDurabilityPower.class, original)), 0, 100);
     }
 }
