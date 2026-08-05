@@ -9,7 +9,7 @@
       "change": 1,
       "operation": "add"
     },
-    "falling_action": {
+    "inactive_action": {
       "type": "origins:change_resource",
       "resource": "origins_classes:stealth",
       "change": 0,
